@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dzfy.ztsm.logistics.dao.DzfyZtsmYymxMapper">
+  <resultMap id="BaseResultMap" type="dzfy.ztsm.logistics.domain.DzfyZtsmYymx">
+    <id column="BXDH" jdbcType="VARCHAR" property="bxdh" />
+    <result column="CPH" jdbcType="VARCHAR" property="cph" />
+    <result column="JSY" jdbcType="VARCHAR" property="jsy" />
+    <result column="TBR" jdbcType="VARCHAR" property="tbr" />
+    <result column="TBSJ" jdbcType="DATE" property="tbsj" />
+    <result column="JKJE" jdbcType="DECIMAL" property="jkje" />
+    <result column="JKRQ" jdbcType="DATE" property="jkrq" />
+    <result column="FHD" jdbcType="VARCHAR" property="fhd" />
+    <result column="SHD" jdbcType="VARCHAR" property="shd" />
+    <result column="ZD" jdbcType="VARCHAR" property="zd" />
+    <result column="SJYH" jdbcType="DECIMAL" property="sjyh" />
+    <result column="YKJYSL" jdbcType="DECIMAL" property="ykjysl" />
+    <result column="YKJYDJ" jdbcType="DECIMAL" property="ykjydj" />
+    <result column="YKJYJE" jdbcType="DECIMAL" property="ykjyje" />
+    <result column="XJJYSL" jdbcType="DECIMAL" property="xjjysl" />
+    <result column="XJJYDJ" jdbcType="DECIMAL" property="xjjydj" />
+    <result column="XJJYZE" jdbcType="DECIMAL" property="xjjyze" />
+    <result column="XJGLF" jdbcType="DECIMAL" property="xjglf" />
+    <result column="ETCGLF" jdbcType="DECIMAL" property="etcglf" />
+    <result column="JJFK" jdbcType="DECIMAL" property="jjfk" />
+    <result column="JSXC" jdbcType="DECIMAL" property="jsxc" />
+    <result column="WXFY" jdbcType="DECIMAL" property="wxfy" />
+    <result column="QTFY" jdbcType="DECIMAL" property="qtfy" />
+    <result column="BXHJ" jdbcType="DECIMAL" property="bxhj" />
+    <result column="YFJE" jdbcType="DECIMAL" property="yfje" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    BXDH, CPH, JSY, TBR, TBSJ, JKJE, JKRQ, FHD, SHD, ZD, SJYH, YKJYSL, YKJYDJ, YKJYJE, 
+    XJJYSL, XJJYDJ, XJJYZE, XJGLF, ETCGLF, JJFK, JSXC, WXFY, QTFY, BXHJ, YFJE
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dzfy_ztsm_yymx
+    where BXDH = #{bxdh,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from dzfy_ztsm_yymx
+    where BXDH = #{bxdh,jdbcType=VARCHAR}
+  </delete>
+
+  <insert id="insert" parameterType="dzfy.ztsm.logistics.domain.DzfyZtsmYymx">
+    insert into dzfy_ztsm_yymx (BXDH, CPH, JSY, 
+      TBR, TBSJ, JKJE, JKRQ, 
+      FHD, SHD, ZD, SJYH, 
+      YKJYSL, YKJYDJ, YKJYJE, 
+      XJJYSL, XJJYDJ, XJJYZE, 
+      XJGLF, ETCGLF, JJFK, 
+      JSXC, WXFY, QTFY, BXHJ, 
+      YFJE)
+    values (#{bxdh,jdbcType=VARCHAR}, #{cph,jdbcType=VARCHAR}, #{jsy,jdbcType=VARCHAR}, 
+      #{tbr,jdbcType=VARCHAR}, #{tbsj,jdbcType=DATE}, #{jkje,jdbcType=DECIMAL}, #{jkrq,jdbcType=DATE}, 
+      #{fhd,jdbcType=VARCHAR}, #{shd,jdbcType=VARCHAR}, #{zd,jdbcType=VARCHAR}, #{sjyh,jdbcType=DECIMAL}, 
+      #{ykjysl,jdbcType=DECIMAL}, #{ykjydj,jdbcType=DECIMAL}, #{ykjyje,jdbcType=DECIMAL}, 
+      #{xjjysl,jdbcType=DECIMAL}, #{xjjydj,jdbcType=DECIMAL}, #{xjjyze,jdbcType=DECIMAL}, 
+      #{xjglf,jdbcType=DECIMAL}, #{etcglf,jdbcType=DECIMAL}, #{jjfk,jdbcType=DECIMAL}, 
+      #{jsxc,jdbcType=DECIMAL}, #{wxfy,jdbcType=DECIMAL}, #{qtfy,jdbcType=DECIMAL}, #{bxhj,jdbcType=DECIMAL}, 
+      #{yfje,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="dzfy.ztsm.logistics.domain.DzfyZtsmYymx">
+    insert into dzfy_ztsm_yymx
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bxdh != null">
+        BXDH,
+      </if>
+      <if test="cph != null">
+        CPH,
+      </if>
+      <if test="jsy != null">
+        JSY,
+      </if>
+      <if test="tbr != null">
+        TBR,
+      </if>
+      <if test="tbsj != null">
+        TBSJ,
+      </if>
+      <if test="jkje != null">
+        JKJE,
+      </if>
+      <if test="jkrq != null">
+        JKRQ,
+      </if>
+      <if test="fhd != null">
+        FHD,
+      </if>
+      <if test="shd != null">
+        SHD,
+      </if>
+      <if test="zd != null">
+        ZD,
+      </if>
+      <if test="sjyh != null">
+        SJYH,
+      </if>
+      <if test="ykjysl != null">
+        YKJYSL,
+      </if>
+      <if test="ykjydj != null">
+        YKJYDJ,
+      </if>
+      <if test="ykjyje != null">
+        YKJYJE,
+      </if>
+      <if test="xjjysl != null">
+        XJJYSL,
+      </if>
+      <if test="xjjydj != null">
+        XJJYDJ,
+      </if>
+      <if test="xjjyze != null">
+        XJJYZE,
+      </if>
+      <if test="xjglf != null">
+        XJGLF,
+      </if>
+      <if test="etcglf != null">
+        ETCGLF,
+      </if>
+      <if test="jjfk != null">
+        JJFK,
+      </if>
+      <if test="jsxc != null">
+        JSXC,
+      </if>
+      <if test="wxfy != null">
+        WXFY,
+      </if>
+      <if test="qtfy != null">
+        QTFY,
+      </if>
+      <if test="bxhj != null">
+        BXHJ,
+      </if>
+      <if test="yfje != null">
+        YFJE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bxdh != null">
+        #{bxdh,jdbcType=VARCHAR},
+      </if>
+      <if test="cph != null">
+        #{cph,jdbcType=VARCHAR},
+      </if>
+      <if test="jsy != null">
+        #{jsy,jdbcType=VARCHAR},
+      </if>
+      <if test="tbr != null">
+        #{tbr,jdbcType=VARCHAR},
+      </if>
+      <if test="tbsj != null">
+        #{tbsj,jdbcType=DATE},
+      </if>
+      <if test="jkje != null">
+        #{jkje,jdbcType=DECIMAL},
+      </if>
+      <if test="jkrq != null">
+        #{jkrq,jdbcType=DATE},
+      </if>
+      <if test="fhd != null">
+        #{fhd,jdbcType=VARCHAR},
+      </if>
+      <if test="shd != null">
+        #{shd,jdbcType=VARCHAR},
+      </if>
+      <if test="zd != null">
+        #{zd,jdbcType=VARCHAR},
+      </if>
+      <if test="sjyh != null">
+        #{sjyh,jdbcType=DECIMAL},
+      </if>
+      <if test="ykjysl != null">
+        #{ykjysl,jdbcType=DECIMAL},
+      </if>
+      <if test="ykjydj != null">
+        #{ykjydj,jdbcType=DECIMAL},
+      </if>
+      <if test="ykjyje != null">
+        #{ykjyje,jdbcType=DECIMAL},
+      </if>
+      <if test="xjjysl != null">
+        #{xjjysl,jdbcType=DECIMAL},
+      </if>
+      <if test="xjjydj != null">
+        #{xjjydj,jdbcType=DECIMAL},
+      </if>
+      <if test="xjjyze != null">
+        #{xjjyze,jdbcType=DECIMAL},
+      </if>
+      <if test="xjglf != null">
+        #{xjglf,jdbcType=DECIMAL},
+      </if>
+      <if test="etcglf != null">
+        #{etcglf,jdbcType=DECIMAL},
+      </if>
+      <if test="jjfk != null">
+        #{jjfk,jdbcType=DECIMAL},
+      </if>
+      <if test="jsxc != null">
+        #{jsxc,jdbcType=DECIMAL},
+      </if>
+      <if test="wxfy != null">
+        #{wxfy,jdbcType=DECIMAL},
+      </if>
+      <if test="qtfy != null">
+        #{qtfy,jdbcType=DECIMAL},
+      </if>
+      <if test="bxhj != null">
+        #{bxhj,jdbcType=DECIMAL},
+      </if>
+      <if test="yfje != null">
+        #{yfje,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="dzfy.ztsm.logistics.domain.DzfyZtsmYymx">
+    update dzfy_ztsm_yymx
+    <set>
+      <if test="cph != null">
+        CPH = #{cph,jdbcType=VARCHAR},
+      </if>
+      <if test="jsy != null">
+        JSY = #{jsy,jdbcType=VARCHAR},
+      </if>
+      <if test="tbr != null">
+        TBR = #{tbr,jdbcType=VARCHAR},
+      </if>
+      <if test="tbsj != null">
+        TBSJ = #{tbsj,jdbcType=DATE},
+      </if>
+      <if test="jkje != null">
+        JKJE = #{jkje,jdbcType=DECIMAL},
+      </if>
+      <if test="jkrq != null">
+        JKRQ = #{jkrq,jdbcType=DATE},
+      </if>
+      <if test="fhd != null">
+        FHD = #{fhd,jdbcType=VARCHAR},
+      </if>
+      <if test="shd != null">
+        SHD = #{shd,jdbcType=VARCHAR},
+      </if>
+      <if test="zd != null">
+        ZD = #{zd,jdbcType=VARCHAR},
+      </if>
+      <if test="sjyh != null">
+        SJYH = #{sjyh,jdbcType=DECIMAL},
+      </if>
+      <if test="ykjysl != null">
+        YKJYSL = #{ykjysl,jdbcType=DECIMAL},
+      </if>
+      <if test="ykjydj != null">
+        YKJYDJ = #{ykjydj,jdbcType=DECIMAL},
+      </if>
+      <if test="ykjyje != null">
+        YKJYJE = #{ykjyje,jdbcType=DECIMAL},
+      </if>
+      <if test="xjjysl != null">
+        XJJYSL = #{xjjysl,jdbcType=DECIMAL},
+      </if>
+      <if test="xjjydj != null">
+        XJJYDJ = #{xjjydj,jdbcType=DECIMAL},
+      </if>
+      <if test="xjjyze != null">
+        XJJYZE = #{xjjyze,jdbcType=DECIMAL},
+      </if>
+      <if test="xjglf != null">
+        XJGLF = #{xjglf,jdbcType=DECIMAL},
+      </if>
+      <if test="etcglf != null">
+        ETCGLF = #{etcglf,jdbcType=DECIMAL},
+      </if>
+      <if test="jjfk != null">
+        JJFK = #{jjfk,jdbcType=DECIMAL},
+      </if>
+      <if test="jsxc != null">
+        JSXC = #{jsxc,jdbcType=DECIMAL},
+      </if>
+      <if test="wxfy != null">
+        WXFY = #{wxfy,jdbcType=DECIMAL},
+      </if>
+      <if test="qtfy != null">
+        QTFY = #{qtfy,jdbcType=DECIMAL},
+      </if>
+      <if test="bxhj != null">
+        BXHJ = #{bxhj,jdbcType=DECIMAL},
+      </if>
+      <if test="yfje != null">
+        YFJE = #{yfje,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where BXDH = #{bxdh,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="dzfy.ztsm.logistics.domain.DzfyZtsmYymx">
+    update dzfy_ztsm_yymx
+    set CPH = #{cph,jdbcType=VARCHAR},
+      JSY = #{jsy,jdbcType=VARCHAR},
+      TBR = #{tbr,jdbcType=VARCHAR},
+      TBSJ = #{tbsj,jdbcType=DATE},
+      JKJE = #{jkje,jdbcType=DECIMAL},
+      JKRQ = #{jkrq,jdbcType=DATE},
+      FHD = #{fhd,jdbcType=VARCHAR},
+      SHD = #{shd,jdbcType=VARCHAR},
+      ZD = #{zd,jdbcType=VARCHAR},
+      SJYH = #{sjyh,jdbcType=DECIMAL},
+      YKJYSL = #{ykjysl,jdbcType=DECIMAL},
+      YKJYDJ = #{ykjydj,jdbcType=DECIMAL},
+      YKJYJE = #{ykjyje,jdbcType=DECIMAL},
+      XJJYSL = #{xjjysl,jdbcType=DECIMAL},
+      XJJYDJ = #{xjjydj,jdbcType=DECIMAL},
+      XJJYZE = #{xjjyze,jdbcType=DECIMAL},
+      XJGLF = #{xjglf,jdbcType=DECIMAL},
+      ETCGLF = #{etcglf,jdbcType=DECIMAL},
+      JJFK = #{jjfk,jdbcType=DECIMAL},
+      JSXC = #{jsxc,jdbcType=DECIMAL},
+      WXFY = #{wxfy,jdbcType=DECIMAL},
+      QTFY = #{qtfy,jdbcType=DECIMAL},
+      BXHJ = #{bxhj,jdbcType=DECIMAL},
+      YFJE = #{yfje,jdbcType=DECIMAL}
+    where BXDH = #{bxdh,jdbcType=VARCHAR}
+  </update>
+
+
+</mapper>

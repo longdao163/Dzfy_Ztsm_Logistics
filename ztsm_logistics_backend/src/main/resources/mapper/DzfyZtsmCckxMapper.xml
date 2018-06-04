@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dzfy.ztsm.logistics.dao.DzfyZtsmCckxMapper">
+  <resultMap id="BaseResultMap" type="dzfy.ztsm.logistics.domain.DzfyZtsmCckx">
+    <id column="KXBS" jdbcType="VARCHAR" property="kxbs" />
+    <result column="BXDH" jdbcType="VARCHAR" property="bxdh" />
+    <result column="KSXM" jdbcType="DECIMAL" property="ksxm" />
+    <result column="XMDJ" jdbcType="DECIMAL" property="xmdj" />
+    <result column="XMSL" jdbcType="DECIMAL" property="xmsl" />
+    <result column="SLDW" jdbcType="VARCHAR" property="sldw" />
+    <result column="KXZE" jdbcType="DECIMAL" property="kxze" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    KXBS, BXDH, KSXM, XMDJ, XMSL, SLDW, KXZE
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dzfy_ztsm_cckx
+    where KXBS = #{kxbs,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from dzfy_ztsm_cckx
+    where KXBS = #{kxbs,jdbcType=VARCHAR}
+  </delete>
+
+  <insert id="insert" parameterType="dzfy.ztsm.logistics.domain.DzfyZtsmCckx">
+    insert into dzfy_ztsm_cckx (KXBS, BXDH, KSXM, 
+      XMDJ, XMSL, SLDW, KXZE
+      )
+    values (#{kxbs,jdbcType=VARCHAR}, #{bxdh,jdbcType=VARCHAR}, #{ksxm,jdbcType=DECIMAL}, 
+      #{xmdj,jdbcType=DECIMAL}, #{xmsl,jdbcType=DECIMAL}, #{sldw,jdbcType=VARCHAR}, #{kxze,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="dzfy.ztsm.logistics.domain.DzfyZtsmCckx">
+    insert into dzfy_ztsm_cckx
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="kxbs != null">
+        KXBS,
+      </if>
+      <if test="bxdh != null">
+        BXDH,
+      </if>
+      <if test="ksxm != null">
+        KSXM,
+      </if>
+      <if test="xmdj != null">
+        XMDJ,
+      </if>
+      <if test="xmsl != null">
+        XMSL,
+      </if>
+      <if test="sldw != null">
+        SLDW,
+      </if>
+      <if test="kxze != null">
+        KXZE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="kxbs != null">
+        #{kxbs,jdbcType=VARCHAR},
+      </if>
+      <if test="bxdh != null">
+        #{bxdh,jdbcType=VARCHAR},
+      </if>
+      <if test="ksxm != null">
+        #{ksxm,jdbcType=DECIMAL},
+      </if>
+      <if test="xmdj != null">
+        #{xmdj,jdbcType=DECIMAL},
+      </if>
+      <if test="xmsl != null">
+        #{xmsl,jdbcType=DECIMAL},
+      </if>
+      <if test="sldw != null">
+        #{sldw,jdbcType=VARCHAR},
+      </if>
+      <if test="kxze != null">
+        #{kxze,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="dzfy.ztsm.logistics.domain.DzfyZtsmCckx">
+    update dzfy_ztsm_cckx
+    <set>
+      <if test="bxdh != null">
+        BXDH = #{bxdh,jdbcType=VARCHAR},
+      </if>
+      <if test="ksxm != null">
+        KSXM = #{ksxm,jdbcType=DECIMAL},
+      </if>
+      <if test="xmdj != null">
+        XMDJ = #{xmdj,jdbcType=DECIMAL},
+      </if>
+      <if test="xmsl != null">
+        XMSL = #{xmsl,jdbcType=DECIMAL},
+      </if>
+      <if test="sldw != null">
+        SLDW = #{sldw,jdbcType=VARCHAR},
+      </if>
+      <if test="kxze != null">
+        KXZE = #{kxze,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where KXBS = #{kxbs,jdbcType=VARCHAR}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="dzfy.ztsm.logistics.domain.DzfyZtsmCckx">
+    update dzfy_ztsm_cckx
+    set BXDH = #{bxdh,jdbcType=VARCHAR},
+      KSXM = #{ksxm,jdbcType=DECIMAL},
+      XMDJ = #{xmdj,jdbcType=DECIMAL},
+      XMSL = #{xmsl,jdbcType=DECIMAL},
+      SLDW = #{sldw,jdbcType=VARCHAR},
+      KXZE = #{kxze,jdbcType=DECIMAL}
+    where KXBS = #{kxbs,jdbcType=VARCHAR}
+  </update>
+
+</mapper>

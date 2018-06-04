@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dzfy.ztsm.logistics.dao.DzfyZtsmClMapper">
+  <resultMap id="BaseResultMap" type="dzfy.ztsm.logistics.domain.DzfyZtsmCl">
+    <id column="XTBS" jdbcType="VARCHAR" property="xtbs" />
+    <result column="CPHM" jdbcType="VARCHAR" property="cphm" />
+    <result column="CLLX" jdbcType="DECIMAL" property="cllx" />
+    <result column="CLPP" jdbcType="VARCHAR" property="clpp" />
+    <result column="CLXH" jdbcType="VARCHAR" property="clxh" />
+    <result column="CLYS" jdbcType="VARCHAR" property="clys" />
+    <result column="HZDW" jdbcType="DECIMAL" property="hzdw" />
+    <result column="GMSJ" jdbcType="DATE" property="gmsj" />
+    <result column="FPBH" jdbcType="VARCHAR" property="fpbh" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    XTBS, CPHM, CLLX, CLPP, CLXH, CLYS, HZDW, GMSJ, FPBH
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dzfy_ztsm_cl
+    where XTBS = #{xtbs,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from dzfy_ztsm_cl
+    where XTBS = #{xtbs,jdbcType=VARCHAR}
+  </delete>
+
+  <insert id="insert" parameterType="dzfy.ztsm.logistics.domain.DzfyZtsmCl">
+    insert into dzfy_ztsm_cl (XTBS, CPHM, CLLX, 
+      CLPP, CLXH, CLYS, HZDW, 
+      GMSJ, FPBH)
+    values (#{xtbs,jdbcType=VARCHAR}, #{cphm,jdbcType=VARCHAR}, #{cllx,jdbcType=DECIMAL}, 
+      #{clpp,jdbcType=VARCHAR}, #{clxh,jdbcType=VARCHAR}, #{clys,jdbcType=VARCHAR}, #{hzdw,jdbcType=DECIMAL}, 
+      #{gmsj,jdbcType=DATE}, #{fpbh,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="dzfy.ztsm.logistics.domain.DzfyZtsmCl">
+    insert into dzfy_ztsm_cl
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="xtbs != null">
+        XTBS,
+      </if>
+      <if test="cphm != null">
+        CPHM,
+      </if>
+      <if test="cllx != null">
+        CLLX,
+      </if>
+      <if test="clpp != null">
+        CLPP,
+      </if>
+      <if test="clxh != null">
+        CLXH,
+      </if>
+      <if test="clys != null">
+        CLYS,
+      </if>
+      <if test="hzdw != null">
+        HZDW,
+      </if>
+      <if test="gmsj != null">
+        GMSJ,
+      </if>
+      <if test="fpbh != null">
+        FPBH,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="xtbs != null">
+        #{xtbs,jdbcType=VARCHAR},
+      </if>
+      <if test="cphm != null">
+        #{cphm,jdbcType=VARCHAR},
+      </if>
+      <if test="cllx != null">
+        #{cllx,jdbcType=DECIMAL},
+      </if>
+      <if test="clpp != null">
+        #{clpp,jdbcType=VARCHAR},
+      </if>
+      <if test="clxh != null">
+        #{clxh,jdbcType=VARCHAR},
+      </if>
+      <if test="clys != null">
+        #{clys,jdbcType=VARCHAR},
+      </if>
+      <if test="hzdw != null">
+        #{hzdw,jdbcType=DECIMAL},
+      </if>
+      <if test="gmsj != null">
+        #{gmsj,jdbcType=DATE},
+      </if>
+      <if test="fpbh != null">
+        #{fpbh,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="dzfy.ztsm.logistics.domain.DzfyZtsmCl">
+    update dzfy_ztsm_cl
+    <set>
+      <if test="cphm != null">
+        CPHM = #{cphm,jdbcType=VARCHAR},
+      </if>
+      <if test="cllx != null">
+        CLLX = #{cllx,jdbcType=DECIMAL},
+      </if>
+      <if test="clpp != null">
+        CLPP = #{clpp,jdbcType=VARCHAR},
+      </if>
+      <if test="clxh != null">
+        CLXH = #{clxh,jdbcType=VARCHAR},
+      </if>
+      <if test="clys != null">
+        CLYS = #{clys,jdbcType=VARCHAR},
+      </if>
+      <if test="hzdw != null">
+        HZDW = #{hzdw,jdbcType=DECIMAL},
+      </if>
+      <if test="gmsj != null">
+        GMSJ = #{gmsj,jdbcType=DATE},
+      </if>
+      <if test="fpbh != null">
+        FPBH = #{fpbh,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where XTBS = #{xtbs,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="dzfy.ztsm.logistics.domain.DzfyZtsmCl">
+    update dzfy_ztsm_cl
+    set CPHM = #{cphm,jdbcType=VARCHAR},
+      CLLX = #{cllx,jdbcType=DECIMAL},
+      CLPP = #{clpp,jdbcType=VARCHAR},
+      CLXH = #{clxh,jdbcType=VARCHAR},
+      CLYS = #{clys,jdbcType=VARCHAR},
+      HZDW = #{hzdw,jdbcType=DECIMAL},
+      GMSJ = #{gmsj,jdbcType=DATE},
+      FPBH = #{fpbh,jdbcType=VARCHAR}
+    where XTBS = #{xtbs,jdbcType=VARCHAR}
+  </update>
+
+  <!--修改为车辆信息-->
+
+  <select id="selectAllCars" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" /> from dzfy_ztsm_cl
+    <where>
+      <if test="cphm != ''">
+        CPHM like CONCAT('%', #{cphm}, '%')
+      </if>
+    </where>
+
+  </select>
+
+</mapper>

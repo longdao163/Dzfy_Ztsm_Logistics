@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dzfy.ztsm.logistics.dao.DzfyZtsmCcjhMapper">
+  <resultMap id="BaseResultMap" type="dzfy.ztsm.logistics.domain.DzfyZtsmCcjh">
+    <id column="JHBS" jdbcType="VARCHAR" property="jhbs" />
+    <result column="BXDH" jdbcType="VARCHAR" property="bxdh" />
+    <result column="CCSJ" jdbcType="DATE" property="ccsj" />
+    <result column="CHHM" jdbcType="VARCHAR" property="chhm" />
+    <result column="SJXM" jdbcType="VARCHAR" property="sjxm" />
+    <result column="FHDD" jdbcType="VARCHAR" property="fhdd" />
+    <result column="FHDW" jdbcType="VARCHAR" property="fhdw" />
+    <result column="FHR" jdbcType="VARCHAR" property="fhr" />
+    <result column="FHDH" jdbcType="VARCHAR" property="fhdh" />
+    <result column="SHDD" jdbcType="VARCHAR" property="shdd" />
+    <result column="SHDW" jdbcType="VARCHAR" property="shdw" />
+    <result column="SHR" jdbcType="VARCHAR" property="shr" />
+    <result column="SHDH" jdbcType="VARCHAR" property="shdh" />
+    <result column="CCZT" jdbcType="DECIMAL" property="cczt" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    JHBS, BXDH, CCSJ, CHHM, SJXM, FHDD, FHDW, FHR, FHDH, SHDD, SHDW, SHR, SHDH, CCZT
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dzfy_ztsm_ccjh
+    where JHBS = #{jhbs,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from dzfy_ztsm_ccjh
+    where JHBS = #{jhbs,jdbcType=VARCHAR}
+  </delete>
+
+  <insert id="insert" parameterType="dzfy.ztsm.logistics.domain.DzfyZtsmCcjh">
+    insert into dzfy_ztsm_ccjh (JHBS, BXDH, CCSJ, 
+      CHHM, SJXM, FHDD, FHDW, 
+      FHR, FHDH, SHDD, SHDW, 
+      SHR, SHDH, CCZT)
+    values (#{jhbs,jdbcType=VARCHAR}, #{bxdh,jdbcType=VARCHAR}, #{ccsj,jdbcType=DATE}, 
+      #{chhm,jdbcType=VARCHAR}, #{sjxm,jdbcType=VARCHAR}, #{fhdd,jdbcType=VARCHAR}, #{fhdw,jdbcType=VARCHAR}, 
+      #{fhr,jdbcType=VARCHAR}, #{fhdh,jdbcType=VARCHAR}, #{shdd,jdbcType=VARCHAR}, #{shdw,jdbcType=VARCHAR}, 
+      #{shr,jdbcType=VARCHAR}, #{shdh,jdbcType=VARCHAR}, #{cczt,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="dzfy.ztsm.logistics.domain.DzfyZtsmCcjh">
+    insert into dzfy_ztsm_ccjh
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="jhbs != null">
+        JHBS,
+      </if>
+      <if test="bxdh != null">
+        BXDH,
+      </if>
+      <if test="ccsj != null">
+        CCSJ,
+      </if>
+      <if test="chhm != null">
+        CHHM,
+      </if>
+      <if test="sjxm != null">
+        SJXM,
+      </if>
+      <if test="fhdd != null">
+        FHDD,
+      </if>
+      <if test="fhdw != null">
+        FHDW,
+      </if>
+      <if test="fhr != null">
+        FHR,
+      </if>
+      <if test="fhdh != null">
+        FHDH,
+      </if>
+      <if test="shdd != null">
+        SHDD,
+      </if>
+      <if test="shdw != null">
+        SHDW,
+      </if>
+      <if test="shr != null">
+        SHR,
+      </if>
+      <if test="shdh != null">
+        SHDH,
+      </if>
+      <if test="cczt != null">
+        CCZT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="jhbs != null">
+        #{jhbs,jdbcType=VARCHAR},
+      </if>
+      <if test="bxdh != null">
+        #{bxdh,jdbcType=VARCHAR},
+      </if>
+      <if test="ccsj != null">
+        #{ccsj,jdbcType=DATE},
+      </if>
+      <if test="chhm != null">
+        #{chhm,jdbcType=VARCHAR},
+      </if>
+      <if test="sjxm != null">
+        #{sjxm,jdbcType=VARCHAR},
+      </if>
+      <if test="fhdd != null">
+        #{fhdd,jdbcType=VARCHAR},
+      </if>
+      <if test="fhdw != null">
+        #{fhdw,jdbcType=VARCHAR},
+      </if>
+      <if test="fhr != null">
+        #{fhr,jdbcType=VARCHAR},
+      </if>
+      <if test="fhdh != null">
+        #{fhdh,jdbcType=VARCHAR},
+      </if>
+      <if test="shdd != null">
+        #{shdd,jdbcType=VARCHAR},
+      </if>
+      <if test="shdw != null">
+        #{shdw,jdbcType=VARCHAR},
+      </if>
+      <if test="shr != null">
+        #{shr,jdbcType=VARCHAR},
+      </if>
+      <if test="shdh != null">
+        #{shdh,jdbcType=VARCHAR},
+      </if>
+      <if test="cczt != null">
+        #{cczt,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="dzfy.ztsm.logistics.domain.DzfyZtsmCcjh">
+    update dzfy_ztsm_ccjh
+    <set>
+      <if test="bxdh != null">
+        BXDH = #{bxdh,jdbcType=VARCHAR},
+      </if>
+      <if test="ccsj != null">
+        CCSJ = #{ccsj,jdbcType=DATE},
+      </if>
+      <if test="chhm != null">
+        CHHM = #{chhm,jdbcType=VARCHAR},
+      </if>
+      <if test="sjxm != null">
+        SJXM = #{sjxm,jdbcType=VARCHAR},
+      </if>
+      <if test="fhdd != null">
+        FHDD = #{fhdd,jdbcType=VARCHAR},
+      </if>
+      <if test="fhdw != null">
+        FHDW = #{fhdw,jdbcType=VARCHAR},
+      </if>
+      <if test="fhr != null">
+        FHR = #{fhr,jdbcType=VARCHAR},
+      </if>
+      <if test="fhdh != null">
+        FHDH = #{fhdh,jdbcType=VARCHAR},
+      </if>
+      <if test="shdd != null">
+        SHDD = #{shdd,jdbcType=VARCHAR},
+      </if>
+      <if test="shdw != null">
+        SHDW = #{shdw,jdbcType=VARCHAR},
+      </if>
+      <if test="shr != null">
+        SHR = #{shr,jdbcType=VARCHAR},
+      </if>
+      <if test="shdh != null">
+        SHDH = #{shdh,jdbcType=VARCHAR},
+      </if>
+      <if test="cczt != null">
+        CCZT = #{cczt,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where JHBS = #{jhbs,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="dzfy.ztsm.logistics.domain.DzfyZtsmCcjh">
+    update dzfy_ztsm_ccjh
+    set BXDH = #{bxdh,jdbcType=VARCHAR},
+      CCSJ = #{ccsj,jdbcType=DATE},
+      CHHM = #{chhm,jdbcType=VARCHAR},
+      SJXM = #{sjxm,jdbcType=VARCHAR},
+      FHDD = #{fhdd,jdbcType=VARCHAR},
+      FHDW = #{fhdw,jdbcType=VARCHAR},
+      FHR = #{fhr,jdbcType=VARCHAR},
+      FHDH = #{fhdh,jdbcType=VARCHAR},
+      SHDD = #{shdd,jdbcType=VARCHAR},
+      SHDW = #{shdw,jdbcType=VARCHAR},
+      SHR = #{shr,jdbcType=VARCHAR},
+      SHDH = #{shdh,jdbcType=VARCHAR},
+      CCZT = #{cczt,jdbcType=DECIMAL}
+    where JHBS = #{jhbs,jdbcType=VARCHAR}
+  </update>
+
+
+
+</mapper>

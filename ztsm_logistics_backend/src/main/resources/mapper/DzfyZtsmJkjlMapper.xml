@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dzfy.ztsm.logistics.dao.DzfyZtsmJkjlMapper">
+  <resultMap id="BaseResultMap" type="dzfy.ztsm.logistics.domain.DzfyZtsmJkjl">
+    <id column="JKBS" jdbcType="VARCHAR" property="jkbs" />
+    <result column="BXDH" jdbcType="VARCHAR" property="bxdh" />
+    <result column="JKRQ" jdbcType="DATE" property="jkrq" />
+    <result column="JKJE" jdbcType="DECIMAL" property="jkje" />
+    <result column="JKR" jdbcType="VARCHAR" property="jkr" />
+    <result column="CLR" jdbcType="VARCHAR" property="clr" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    JKBS, BXDH, JKRQ, JKJE, JKR, CLR
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dzfy_ztsm_jkjl
+    where JKBS = #{jkbs,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from dzfy_ztsm_jkjl
+    where JKBS = #{jkbs,jdbcType=VARCHAR}
+  </delete>
+
+  <insert id="insert" parameterType="dzfy.ztsm.logistics.domain.DzfyZtsmJkjl">
+    insert into dzfy_ztsm_jkjl (JKBS, BXDH, JKRQ, 
+      JKJE, JKR, CLR)
+    values (#{jkbs,jdbcType=VARCHAR}, #{bxdh,jdbcType=VARCHAR}, #{jkrq,jdbcType=DATE}, 
+      #{jkje,jdbcType=DECIMAL}, #{jkr,jdbcType=VARCHAR}, #{clr,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="dzfy.ztsm.logistics.domain.DzfyZtsmJkjl">
+    insert into dzfy_ztsm_jkjl
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="jkbs != null">
+        JKBS,
+      </if>
+      <if test="bxdh != null">
+        BXDH,
+      </if>
+      <if test="jkrq != null">
+        JKRQ,
+      </if>
+      <if test="jkje != null">
+        JKJE,
+      </if>
+      <if test="jkr != null">
+        JKR,
+      </if>
+      <if test="clr != null">
+        CLR,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="jkbs != null">
+        #{jkbs,jdbcType=VARCHAR},
+      </if>
+      <if test="bxdh != null">
+        #{bxdh,jdbcType=VARCHAR},
+      </if>
+      <if test="jkrq != null">
+        #{jkrq,jdbcType=DATE},
+      </if>
+      <if test="jkje != null">
+        #{jkje,jdbcType=DECIMAL},
+      </if>
+      <if test="jkr != null">
+        #{jkr,jdbcType=VARCHAR},
+      </if>
+      <if test="clr != null">
+        #{clr,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="dzfy.ztsm.logistics.domain.DzfyZtsmJkjl">
+    update dzfy_ztsm_jkjl
+    <set>
+      <if test="bxdh != null">
+        BXDH = #{bxdh,jdbcType=VARCHAR},
+      </if>
+      <if test="jkrq != null">
+        JKRQ = #{jkrq,jdbcType=DATE},
+      </if>
+      <if test="jkje != null">
+        JKJE = #{jkje,jdbcType=DECIMAL},
+      </if>
+      <if test="jkr != null">
+        JKR = #{jkr,jdbcType=VARCHAR},
+      </if>
+      <if test="clr != null">
+        CLR = #{clr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where JKBS = #{jkbs,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="dzfy.ztsm.logistics.domain.DzfyZtsmJkjl">
+    update dzfy_ztsm_jkjl
+    set BXDH = #{bxdh,jdbcType=VARCHAR},
+      JKRQ = #{jkrq,jdbcType=DATE},
+      JKJE = #{jkje,jdbcType=DECIMAL},
+      JKR = #{jkr,jdbcType=VARCHAR},
+      CLR = #{clr,jdbcType=VARCHAR}
+    where JKBS = #{jkbs,jdbcType=VARCHAR}
+  </update>
+
+</mapper>

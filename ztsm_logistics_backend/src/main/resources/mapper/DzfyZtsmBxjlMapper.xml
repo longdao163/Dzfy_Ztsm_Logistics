@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dzfy.ztsm.logistics.dao.DzfyZtsmBxjlMapper">
+  <resultMap id="BaseResultMap" type="dzfy.ztsm.logistics.domain.DzfyZtsmBxjl">
+    <id column="JLBS" jdbcType="VARCHAR" property="jlbs" />
+    <result column="BXDH" jdbcType="VARCHAR" property="bxdh" />
+    <result column="JLLX" jdbcType="DECIMAL" property="jllx" />
+    <result column="SHZD" jdbcType="VARCHAR" property="shzd" />
+    <result column="SJYH" jdbcType="DECIMAL" property="sjyh" />
+    <result column="CLRY" jdbcType="VARCHAR" property="clry" />
+    <result column="CLSJ" jdbcType="TIMESTAMP" property="clsj" />
+    <result column="CLYJ" jdbcType="VARCHAR" property="clyj" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    JLBS, BXDH, JLLX, SHZD, SJYH, CLRY, CLSJ, CLYJ
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dzfy_ztsm_bxjl
+    where JLBS = #{jlbs,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from dzfy_ztsm_bxjl
+    where JLBS = #{jlbs,jdbcType=VARCHAR}
+  </delete>
+
+  <insert id="insert" parameterType="dzfy.ztsm.logistics.domain.DzfyZtsmBxjl">
+    insert into dzfy_ztsm_bxjl (JLBS, BXDH, JLLX, 
+      SHZD, SJYH, CLRY, CLSJ, 
+      CLYJ)
+    values (#{jlbs,jdbcType=VARCHAR}, #{bxdh,jdbcType=VARCHAR}, #{jllx,jdbcType=DECIMAL}, 
+      #{shzd,jdbcType=VARCHAR}, #{sjyh,jdbcType=DECIMAL}, #{clry,jdbcType=VARCHAR}, #{clsj,jdbcType=TIMESTAMP}, 
+      #{clyj,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="dzfy.ztsm.logistics.domain.DzfyZtsmBxjl">
+    insert into dzfy_ztsm_bxjl
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="jlbs != null">
+        JLBS,
+      </if>
+      <if test="bxdh != null">
+        BXDH,
+      </if>
+      <if test="jllx != null">
+        JLLX,
+      </if>
+      <if test="shzd != null">
+        SHZD,
+      </if>
+      <if test="sjyh != null">
+        SJYH,
+      </if>
+      <if test="clry != null">
+        CLRY,
+      </if>
+      <if test="clsj != null">
+        CLSJ,
+      </if>
+      <if test="clyj != null">
+        CLYJ,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="jlbs != null">
+        #{jlbs,jdbcType=VARCHAR},
+      </if>
+      <if test="bxdh != null">
+        #{bxdh,jdbcType=VARCHAR},
+      </if>
+      <if test="jllx != null">
+        #{jllx,jdbcType=DECIMAL},
+      </if>
+      <if test="shzd != null">
+        #{shzd,jdbcType=VARCHAR},
+      </if>
+      <if test="sjyh != null">
+        #{sjyh,jdbcType=DECIMAL},
+      </if>
+      <if test="clry != null">
+        #{clry,jdbcType=VARCHAR},
+      </if>
+      <if test="clsj != null">
+        #{clsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clyj != null">
+        #{clyj,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="dzfy.ztsm.logistics.domain.DzfyZtsmBxjl">
+    update dzfy_ztsm_bxjl
+    <set>
+      <if test="bxdh != null">
+        BXDH = #{bxdh,jdbcType=VARCHAR},
+      </if>
+      <if test="jllx != null">
+        JLLX = #{jllx,jdbcType=DECIMAL},
+      </if>
+      <if test="shzd != null">
+        SHZD = #{shzd,jdbcType=VARCHAR},
+      </if>
+      <if test="sjyh != null">
+        SJYH = #{sjyh,jdbcType=DECIMAL},
+      </if>
+      <if test="clry != null">
+        CLRY = #{clry,jdbcType=VARCHAR},
+      </if>
+      <if test="clsj != null">
+        CLSJ = #{clsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clyj != null">
+        CLYJ = #{clyj,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where JLBS = #{jlbs,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="dzfy.ztsm.logistics.domain.DzfyZtsmBxjl">
+    update dzfy_ztsm_bxjl
+    set BXDH = #{bxdh,jdbcType=VARCHAR},
+      JLLX = #{jllx,jdbcType=DECIMAL},
+      SHZD = #{shzd,jdbcType=VARCHAR},
+      SJYH = #{sjyh,jdbcType=DECIMAL},
+      CLRY = #{clry,jdbcType=VARCHAR},
+      CLSJ = #{clsj,jdbcType=TIMESTAMP},
+      CLYJ = #{clyj,jdbcType=VARCHAR}
+    where JLBS = #{jlbs,jdbcType=VARCHAR}
+  </update>
+
+
+</mapper>

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dzfy.ztsm.logistics.dao.DzfyZtsmJsyMapper">
+
+  <resultMap id="BaseResultMap" type="dzfy.ztsm.logistics.domain.DzfyZtsmJsy">
+    <id column="GH" jdbcType="VARCHAR" property="gh" />
+    <result column="XM" jdbcType="VARCHAR" property="xm" />
+    <result column="XB" jdbcType="BIT" property="xb" />
+    <result column="CSNY" jdbcType="DATE" property="csny" />
+    <result column="SFZH" jdbcType="VARCHAR" property="sfzh" />
+    <result column="JSZH" jdbcType="VARCHAR" property="jszh" />
+    <result column="SJHM" jdbcType="VARCHAR" property="sjhm" />
+    <result column="JTZZ" jdbcType="VARCHAR" property="jtzz" />
+    <result column="WXBS" jdbcType="VARCHAR" property="wxbs" />
+    <result column="WXNC" jdbcType="VARCHAR" property="wxnc" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="dzfy.ztsm.logistics.domain.DzfyZtsmJsy">
+    <result column="WXTX" jdbcType="LONGVARBINARY" property="wxtx" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    GH, XM, XB, CSNY, SFZH, JSZH, SJHM, JTZZ, WXBS, WXNC
+  </sql>
+  <sql id="Blob_Column_List">
+    WXTX
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from dzfy_ztsm_jsy
+    where GH = #{gh,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from dzfy_ztsm_jsy
+    where GH = #{gh,jdbcType=VARCHAR}
+  </delete>
+
+  <insert id="insert" parameterType="dzfy.ztsm.logistics.domain.DzfyZtsmJsy">
+    insert into dzfy_ztsm_jsy (GH, XM, XB, CSNY, 
+      SFZH, JSZH, SJHM, JTZZ, 
+      WXBS, WXNC, WXTX
+      )
+    values (#{gh,jdbcType=VARCHAR}, #{xm,jdbcType=VARCHAR}, #{xb,jdbcType=BIT}, #{csny,jdbcType=DATE}, 
+      #{sfzh,jdbcType=VARCHAR}, #{jszh,jdbcType=VARCHAR}, #{sjhm,jdbcType=VARCHAR}, #{jtzz,jdbcType=VARCHAR}, 
+      #{wxbs,jdbcType=VARCHAR}, #{wxnc,jdbcType=VARCHAR}, #{wxtx,jdbcType=LONGVARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="dzfy.ztsm.logistics.domain.DzfyZtsmJsy">
+    insert into dzfy_ztsm_jsy
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="gh != null">
+        GH,
+      </if>
+      <if test="xm != null">
+        XM,
+      </if>
+      <if test="xb != null">
+        XB,
+      </if>
+      <if test="csny != null">
+        CSNY,
+      </if>
+      <if test="sfzh != null">
+        SFZH,
+      </if>
+      <if test="jszh != null">
+        JSZH,
+      </if>
+      <if test="sjhm != null">
+        SJHM,
+      </if>
+      <if test="jtzz != null">
+        JTZZ,
+      </if>
+      <if test="wxbs != null">
+        WXBS,
+      </if>
+      <if test="wxnc != null">
+        WXNC,
+      </if>
+      <if test="wxtx != null">
+        WXTX,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="gh != null">
+        #{gh,jdbcType=VARCHAR},
+      </if>
+      <if test="xm != null">
+        #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="xb != null">
+        #{xb,jdbcType=BIT},
+      </if>
+      <if test="csny != null">
+        #{csny,jdbcType=DATE},
+      </if>
+      <if test="sfzh != null">
+        #{sfzh,jdbcType=VARCHAR},
+      </if>
+      <if test="jszh != null">
+        #{jszh,jdbcType=VARCHAR},
+      </if>
+      <if test="sjhm != null">
+        #{sjhm,jdbcType=VARCHAR},
+      </if>
+      <if test="jtzz != null">
+        #{jtzz,jdbcType=VARCHAR},
+      </if>
+      <if test="wxbs != null">
+        #{wxbs,jdbcType=VARCHAR},
+      </if>
+      <if test="wxnc != null">
+        #{wxnc,jdbcType=VARCHAR},
+      </if>
+      <if test="wxtx != null">
+        #{wxtx,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="dzfy.ztsm.logistics.domain.DzfyZtsmJsy">
+    update dzfy_ztsm_jsy
+    <set>
+      <if test="xm != null">
+        XM = #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="xb != null">
+        XB = #{xb,jdbcType=BIT},
+      </if>
+      <if test="csny != null">
+        CSNY = #{csny,jdbcType=DATE},
+      </if>
+      <if test="sfzh != null">
+        SFZH = #{sfzh,jdbcType=VARCHAR},
+      </if>
+      <if test="jszh != null">
+        JSZH = #{jszh,jdbcType=VARCHAR},
+      </if>
+      <if test="sjhm != null">
+        SJHM = #{sjhm,jdbcType=VARCHAR},
+      </if>
+      <if test="jtzz != null">
+        JTZZ = #{jtzz,jdbcType=VARCHAR},
+      </if>
+      <if test="wxbs != null">
+        WXBS = #{wxbs,jdbcType=VARCHAR},
+      </if>
+      <if test="wxnc != null">
+        WXNC = #{wxnc,jdbcType=VARCHAR},
+      </if>
+      <if test="wxtx != null">
+        WXTX = #{wxtx,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where GH = #{gh,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="dzfy.ztsm.logistics.domain.DzfyZtsmJsy">
+    update dzfy_ztsm_jsy
+    set XM = #{xm,jdbcType=VARCHAR},
+      XB = #{xb,jdbcType=BIT},
+      CSNY = #{csny,jdbcType=DATE},
+      SFZH = #{sfzh,jdbcType=VARCHAR},
+      JSZH = #{jszh,jdbcType=VARCHAR},
+      SJHM = #{sjhm,jdbcType=VARCHAR},
+      JTZZ = #{jtzz,jdbcType=VARCHAR},
+      WXBS = #{wxbs,jdbcType=VARCHAR},
+      WXNC = #{wxnc,jdbcType=VARCHAR},
+      WXTX = #{wxtx,jdbcType=LONGVARBINARY}
+    where GH = #{gh,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="dzfy.ztsm.logistics.domain.DzfyZtsmJsy">
+    update dzfy_ztsm_jsy
+    set XM = #{xm,jdbcType=VARCHAR},
+      XB = #{xb,jdbcType=BIT},
+      CSNY = #{csny,jdbcType=DATE},
+      SFZH = #{sfzh,jdbcType=VARCHAR},
+      JSZH = #{jszh,jdbcType=VARCHAR},
+      SJHM = #{sjhm,jdbcType=VARCHAR},
+      JTZZ = #{jtzz,jdbcType=VARCHAR},
+      WXBS = #{wxbs,jdbcType=VARCHAR},
+      WXNC = #{wxnc,jdbcType=VARCHAR}
+    where GH = #{gh,jdbcType=VARCHAR}
+  </update>
+
+
+
+  <select id="selectAllDrivers" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" /> ,
+    <include refid="Blob_Column_List" /> from dzfy_ztsm_jsy
+    <where>
+      <if test="xm != ''">
+        XM like CONCAT('%', #{xm}, '%')
+      </if>
+      <if test="sfzh != ''">
+        <![CDATA[ AND SFZH like CONCAT('%', #{sfzh}, '%') ]]>
+      </if>
+      <if test="jszh != ''">
+        <![CDATA[ AND JSZH like CONCAT('%', #{jszh}, '%')]]>
+      </if>
+      <if test="sjhm != ''">
+        <![CDATA[ AND SJHM like CONCAT('%', #{sjhm}, '%')]]>
+      </if>
+    </where>
+
+  </select>
+
+</mapper>

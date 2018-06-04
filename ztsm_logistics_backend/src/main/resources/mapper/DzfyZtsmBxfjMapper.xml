@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dzfy.ztsm.logistics.dao.DzfyZtsmBxfjMapper">
+  <resultMap id="BaseResultMap" type="dzfy.ztsm.logistics.domain.DzfyZtsmBxfj">
+    <id column="FJBS" jdbcType="VARCHAR" property="fjbs" />
+    <result column="BXDH" jdbcType="VARCHAR" property="bxdh" />
+    <result column="WJLX" jdbcType="VARCHAR" property="wjlx" />
+    <result column="WJMC" jdbcType="VARCHAR" property="wjmc" />
+    <result column="WJDZ" jdbcType="VARCHAR" property="wjdz" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    FJBS, BXDH, WJLX, WJMC, WJDZ
+  </sql>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from dzfy_ztsm_bxfj
+    where FJBS = #{fjbs,jdbcType=VARCHAR}
+  </delete>
+
+  <insert id="insert" parameterType="dzfy.ztsm.logistics.domain.DzfyZtsmBxfj">
+    insert into dzfy_ztsm_bxfj (FJBS, BXDH, WJLX, 
+      WJMC, WJDZ)
+    values (#{fjbs,jdbcType=VARCHAR}, #{bxdh,jdbcType=VARCHAR}, #{wjlx,jdbcType=VARCHAR}, 
+      #{wjmc,jdbcType=VARCHAR}, #{wjdz,jdbcType=VARCHAR})
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="dzfy.ztsm.logistics.domain.DzfyZtsmBxfj">
+    update dzfy_ztsm_bxfj
+    <set>
+      <if test="bxdh != null">
+        BXDH = #{bxdh,jdbcType=VARCHAR},
+      </if>
+      <if test="wjlx != null">
+        WJLX = #{wjlx,jdbcType=VARCHAR},
+      </if>
+      <if test="wjmc != null">
+        WJMC = #{wjmc,jdbcType=VARCHAR},
+      </if>
+      <if test="wjdz != null">
+        WJDZ = #{wjdz,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where FJBS = #{fjbs,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="dzfy.ztsm.logistics.domain.DzfyZtsmBxfj">
+    update dzfy_ztsm_bxfj
+    set BXDH = #{bxdh,jdbcType=VARCHAR},
+      WJLX = #{wjlx,jdbcType=VARCHAR},
+      WJMC = #{wjmc,jdbcType=VARCHAR},
+      WJDZ = #{wjdz,jdbcType=VARCHAR}
+    where FJBS = #{fjbs,jdbcType=VARCHAR}
+  </update>
+  <!--<resultMap id="BaseResultMap" type="DzfyZtsmBxfj">-->
+    <!--<id column="FJBS" jdbcType="VARCHAR" property="fjbs" />-->
+    <!--<result column="BXDH" jdbcType="VARCHAR" property="bxdh" />-->
+    <!--<result column="WJLX" jdbcType="VARCHAR" property="wjlx" />-->
+    <!--<result column="WJMC" jdbcType="VARCHAR" property="wjmc" />-->
+    <!--<result column="WJDZ" jdbcType="VARCHAR" property="wjdz" />-->
+  <!--</resultMap>-->
+
+  <insert id="insertSelective" parameterType="dzfy.ztsm.logistics.domain.DzfyZtsmBxfj">
+    insert into dzfy_ztsm_bxfj
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fjbs != null">
+        FJBS,
+      </if>
+      <if test="bxdh != null">
+        BXDH,
+      </if>
+      <if test="wjlx != null">
+        WJLX,
+      </if>
+      <if test="wjmc != null">
+        WJMC,
+      </if>
+      <if test="wjdz != null">
+        WJDZ,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fjbs != null">
+        #{fjbs,jdbcType=VARCHAR},
+      </if>
+      <if test="bxdh != null">
+        #{bxdh,jdbcType=VARCHAR},
+      </if>
+      <if test="wjlx != null">
+        #{wjlx,jdbcType=VARCHAR},
+      </if>
+      <if test="wjmc != null">
+        #{wjmc,jdbcType=VARCHAR},
+      </if>
+      <if test="wjdz != null">
+        #{wjdz,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!--<resultMap id="BaseResultMap" type="DzfyZtsmBxfj">-->
+    <!--<id column="FJBS" jdbcType="VARCHAR" property="fjbs" />-->
+    <!--<result column="BXDH" jdbcType="VARCHAR" property="bxdh" />-->
+    <!--<result column="WJLX" jdbcType="VARCHAR" property="wjlx" />-->
+    <!--<result column="WJMC" jdbcType="VARCHAR" property="wjmc" />-->
+    <!--<result column="WJDZ" jdbcType="VARCHAR" property="wjdz" />-->
+  <!--</resultMap>-->
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dzfy_ztsm_bxfj
+    where FJBS = #{fjbs,jdbcType=VARCHAR}
+  </select>
+
+  <!--<resultMap id="BaseResultMap" type="DzfyZtsmBxfj">-->
+    <!--<id column="FJBS" jdbcType="VARCHAR" property="fjbs" />-->
+    <!--<result column="BXDH" jdbcType="VARCHAR" property="bxdh" />-->
+    <!--<result column="WJLX" jdbcType="VARCHAR" property="wjlx" />-->
+    <!--<result column="WJMC" jdbcType="VARCHAR" property="wjmc" />-->
+    <!--<result column="WJDZ" jdbcType="VARCHAR" property="wjdz" />-->
+  <!--</resultMap>-->
+
+</mapper>
